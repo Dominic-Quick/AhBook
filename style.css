@@ -1,0 +1,125 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 150vh;
+  width: 100%;
+  background: burlywood;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(https://storage.googleapis.com/du-prd/books/images/9781492632917.jpg);
+}
+.menu{
+  height: 5%;
+  min-height: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: chartreuse;
+  position:sticky;
+  top: 0;
+}
+.l-m{
+  height: 100%;
+  width: 45%;
+  background: brown;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.r-m{
+  height: 100%;
+  width: 45%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-direction: row;
+  background: crimson;
+}
+
+.book-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background: rgba(0, 255, 255, 0.664);
+ 
+  height: 95%;
+  width: 60%;
+  min-width: 500px;
+  padding: 1% 5% 0 5%;
+}
+
+#book-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10%;
+}
+
+#book-info-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+    background: azure;
+}
+h2{
+    text-align: center;
+}
+
+.other-info-lists{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: crimson;
+}
+
+.info-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 50%;
+  height: 100%;
+  list-style: none;
+  background: chartreuse;
+}
+
+.random-btn {
+  margin-right: 1%;
+  margin-left: 1%;
+  height: 70%;
+  width: 20%;
+  min-width: 100px;
+  background-color: blueviolet;
+  box-shadow: .3rem .3rem .5rem black;
+}
+.random-btn:hover{
+  margin-right: .5%;
+  margin-left: 1.5%;
+  box-shadow: .1rem .1rem .5rem black;
+}
+
+#btn{
+  height: 100%;
+  width: 100%;
+  border-style: none;
+  
+}
