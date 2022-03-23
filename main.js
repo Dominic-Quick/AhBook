@@ -4,12 +4,12 @@ fetch(
   .then((res) => res.json())
   .then((data) => {
     console.log(data);
+    // Creates Book Class
     class Book{
       constructor(data){
         this.data = data
-        // this.book = this.book
         this.mkBook()
-        this.desc()
+        this.infoCheck()
       }
       mkBook(){
         let list = this.data.results.lists;
@@ -21,46 +21,56 @@ fetch(
         return this.book = list[rndmList].books[bookNmb];
       }
 
-      desc(){
-        let description = this.book.description;
-        if(description === ""){
-          description = 'No description avalable :(';
+      infoCheck(){
+        
+        if(this.book.description === ""){
+          this.book.description = 'No description avalable :(';
         }
-        return description;
+        return this.book.description;
       }
     }
-    let tBook = new Book(data);
+    // Veriables 
+    let tBook = new Book(data).book;
     let nBook = new Book(data);
-    let book = tBook.book;
+    let book = tBook;
     let oldBks = [];
-    let curN = ''
-  
+    let curN = '';
     let btn = document.getElementById('btn');
+    let bName = document.getElementById('book-name')
+    let outMsg = bName.innerHTML = "Sorry it seems you've seen every book on the Best Sellers List :(";
+    // Sets Info On Page
     function setPage(book){
       document.getElementById("book-img").setAttribute("style",`background:url(${book.book_image});width:${book.book_image_width + "px"};height:${book.book_image_height + "px"};`);
-      document.getElementById('book-name').innerHTML = `${book.title}`;
+      bName.innerHTML = `${book.title}`;
       document.getElementById('author').innerHTML =`${book.author}`;
       console.log(book.description);
       console.log(book.book_image_height);
       console.log(book.book_image_width);
       return book
     }
-    function startPage(nBook,book){
+    //Sets First Book & Next Book
+    function startPage(){
     console.log('now');
     console.log(book.title);
     console.log('next');
     console.log(nBook.book.title);
-    btn.setAttribute("style",`background:url(${nBook.book.book_image}) object-fit: scale-down;`);
-    setPage(book)
+    btn.setAttribute("style",`background:url(${nBook.book.book_image});`);
+    setPage(book);
     }
 
-    function nextB(nBook){
+    // Sets Up Next Book
+    function nextB(){
       tBook = nBook.book;
       console.log('now');
       console.log(tBook.title);
       nBook = new Book(data);
-      while(nBook.Book === tBook || oldBks.includes(nBook.Book)){
-        nBook = new Book(data);
+      let count = 0;
+      while(nBook.book === tBook || oldBks.includes(nBook.book)){
+        count++;
+        if(count >= 200){
+          console.log('23423');
+          return outMsg;
+        }else{nBook = new Book(data);}
       }
       console.log(nBook.book.book_image_height)
       btn.setAttribute("style",`background:url(${nBook.book.book_image})`);
@@ -69,16 +79,27 @@ fetch(
       setPage(tBook);
       return nBook;
     }
-    startPage(nBook,book)
-    btn.addEventListener("click", () => {
-      
-      nBook = nextB(nBook);
+
+    function prevBook(){
       if(!oldBks.includes(tBook)){
         oldBks.push(tBook);
       }
-      console.log(oldBks);
-      curN = oldBks.length - 1
-      console.log(curN)
+      // tBook =                                                                    
+    }
+    startPage()
+    //Btn Actions
+    btn.addEventListener("click", () => {
+      if(!oldBks.includes(tBook)){
+        oldBks.push(tBook);
+      }
+      let n = nextB()
+      if(n == !outMsg){
+        nBook = n;
+        console.log(oldBks);
+        curN = oldBks.length - 1;
+        console.log(curN);
+      }else{console.log('no more');}
+     
       
     });
   });

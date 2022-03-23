@@ -12,7 +12,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url(https://storage.googleapis.com/du-prd/books/images/9781492632917.jpg);
 }
 .menu{
   height: 5%;
@@ -32,9 +31,8 @@ body {
   background: brown;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   flex-direction: row;
-  justify-content: space-between;
 }
 .r-m{
   height: 100%;
