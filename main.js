@@ -36,8 +36,9 @@ fetch(
     let oldBks = [];
     let curN = '';
     let btn = document.getElementById('btn');
-    let bName = document.getElementById('book-name')
-    let outMsg = bName.innerHTML = "Sorry it seems you've seen every book on the Best Sellers List :(";
+    let bName = document.getElementById('book-name');
+    let msg ="Sorry it seems you've seen every book on the Best Sellers List :(";
+    let outMsg = bName.innerHTML = msg;
     // Sets Info On Page
     function setPage(book){
       document.getElementById("book-img").setAttribute("style",`background:url(${book.book_image});width:${book.book_image_width + "px"};height:${book.book_image_height + "px"};`);
@@ -91,10 +92,9 @@ fetch(
     btn.addEventListener("click", () => {
       if(!oldBks.includes(tBook)){
         oldBks.push(tBook);
-      }
-      let n = nextB()
-      if(n == !outMsg){
-        nBook = n;
+      } 
+      if(bName.innerHTML !== msg){
+        nBook = nextB();
         console.log(oldBks);
         curN = oldBks.length - 1;
         console.log(curN);
